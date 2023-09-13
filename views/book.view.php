@@ -3,18 +3,12 @@
 
 <?php
 $slider = [
-    image_url($book['image']),
-    image_url($book['image']),
-    image_url($book['image']),
-    image_url($book['image']),
-    image_url($book['image'])
+    $book['image'], $book['image'], $book['image'],
+    $book['image'], $book['image']
 ];
 $slider_col = [
-    image_url($book['image']),
-    image_url($book['image']),
-    image_url($book['image']),
-    image_url($book['image']),
-    image_url($book['image'])
+    $book['image'], $book['image'], $book['image'],
+    $book['image'], $book['image']
 ];
 ?>
 
