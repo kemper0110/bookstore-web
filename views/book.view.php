@@ -15,16 +15,18 @@ $slider_col = [
 
 <section class="w-full">
     <!--   anchor to book type all books page     -->
-    <a class="ms-2 text-blue-600 hover:text-blue-700 text-lg underline underline-offset-2 hover:no-underline" href="/<?= $book['type_id'] . '.php' ?>">
+    <a class="ms-2 text-blue-600 hover:text-blue-700 text-lg underline underline-offset-2 hover:no-underline"
+       href="/<?= $book['type_id'] . '.php' ?>">
         <?= $book['book_type_name'] ?>
     </a>
 
-    <div class="mt-6 flex gap-4 justify-between">
+    <div class="mt-12 flex flex-wrap gap-4 justify-between">
         <div class="flex gap-4">
             <ul class="mt-4 flex flex-col gap-2">
                 <?php foreach ($slider_col as $image): ?>
                     <li class="hover:border-purple-600 border-2 border-transparent rounded-lg">
-                       <img class="w-[70px] h-[90px] rounded-lg" src="<?= image_url($book['image']) ?>" alt="<?= $book['name'] ?>"/>
+                        <img class="w-[70px] h-[90px] rounded-lg" src="<?= image_url($book['image']) ?>"
+                             alt="<?= $book['name'] ?>"/>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -32,6 +34,7 @@ $slider_col = [
                  src="<?= image_url($book['image']) ?>" alt="<?= $book['name'] ?>"/>
         </div>
 
+        <!--        <div class="flex flex-row flex-wrap gap-6">-->
         <div class="flex flex-col gap-6">
             <div class="flex gap-3">
                 <?php foreach ($slider as $image): ?>
@@ -117,6 +120,7 @@ $slider_col = [
                 </div>
             </div>
         </div>
+        <!--        </div>-->
     </div>
 
 </section>

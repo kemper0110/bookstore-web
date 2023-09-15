@@ -10,11 +10,16 @@
 <header class="relative z-50 w-full h-full from-pink-500 to-purple-800 after:content-[''] after:absolute after:-bottom-px after:bg-white after:w-full after:h-8 after:rounded-t-full
     bg-[url('/img/top.webp')] bg-cover bg-[center_-200px] bg-no-repeat bg-fixed
 ">
-    <div class="p-4 h-[300px]">
-<!--        <img class="w-full h-auto object-center object-contain"-->
-<!--                src="/top.webp" alt=""/>-->
-        <!--        BOOKSTORE  label    -->
+    <div class="h-[300px]">
+        <div class="flex items-center text-slate-200 bg-black/40 backdrop-blur p-6 gap-4">
+            <div class="w-12 h-12">
+                <?php require "book-icon.view.php" ?>
+            </div>
+            <h1 class="text-4xl font-medium">
+                Много книг
+            </h1>
+        </div>
     </div>
 </header>
 <!-- TODO: main is fixed to be aside and section -->
-<main class="px-2 md:px-4 max-w-[1280px] min-h-screen mx-auto flex flex-col md:flex-row items-start">
+<main class="px-2 md:px-4 max-w-[1280px] min-h-[70vh] mx-auto flex flex-col md:flex-row items-start">

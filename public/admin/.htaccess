@@ -1,0 +1,4 @@
+AuthName "Authentication"
+AuthType Basic
+AuthUserFile /var/www/bookstore/.htpasswd
+require valid-user
