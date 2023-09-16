@@ -3,11 +3,11 @@
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $code = $_POST['code'];
     $status = file_put_contents('../../views/books.view.php', $code);
-    if($status)
-        echo "ok";
-    else
+    if(!$status) {
         echo "fail";
-    exit;
+        exit;
+    }
+    header("Location: /admin/update-main.php");
 }
 
 $editor = [
