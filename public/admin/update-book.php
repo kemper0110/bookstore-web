@@ -1,14 +1,19 @@
 <?php
 
-require "../repositories/BookRepository.php";
+require "./../../repositories/BookRepository.php";
 use repositories\BookRepository;
 
 $uri = $_SERVER['REQUEST_URI'];
-$id = explode('/', $uri)[2];
+$id = explode('/', $uri)[3];
 
-require "../functions.php";
+require "../../functions.php";
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if(isset($_POST['delete'])) {
+        BookRepository::delete($db, $id);
+        header("Location: /update-book");
+        die();
+    }
     $file = $_FILES['image'];
     $image = null;
     if(!$file['error']) {
@@ -19,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             die(400);
         }
         $imageFileType = strtolower(pathinfo(basename($file['name']),PATHINFO_EXTENSION));
-        $target_name = hash_file('md5', $tmp_name) . random_int(1000, 9999) . 'bookstore' . $imageFileType;
+        $target_name = 'update-book.php' . hash_file('md5', $tmp_name) . random_int(1000, 9999) . 'bookstore' . $imageFileType;
         if (!move_uploaded_file($tmp_name, 'storage/' . $target_name)) {
             echo 'upload file error';
             die(500);
@@ -53,5 +58,7 @@ if($id) {
     $stmt->execute();
     $book = $stmt->get_result()->fetch_assoc();
 }
+if(isset($book['image']))
+    $book['image'] = image_url($book['image']);
 
-require "../views/update-book.view.php";
+require "../../views/update-book.view.php";

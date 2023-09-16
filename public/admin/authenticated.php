@@ -14,7 +14,7 @@ $db = connect();
 //exit;
 
 
-    if (!isset($_SERVER['PHP_AUTH_USER'])) {
+if (!isset($_SERVER['PHP_AUTH_USER'])) {
     header('WWW-Authenticate: Basic realm="Protected area"');
     header('HTTP/1.0 401 Unauthorized');
     header('Cache-Control: no-cache, must-revalidate');
@@ -34,7 +34,7 @@ if (!password_verify($combined_password, $stored_password_hash)) {
     header('WWW-Authenticate: Basic realm="Защищенная область"');
     header('HTTP/1.0 401 Unauthorized');
     echo 'Аутентификация не удалась';
-    exit;
+    exit();
 }
 
 $_SESSION['username'] = $user;

@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en" class="text-slate-700">
@@ -20,9 +18,11 @@ session_start();
                 <div class="w-12 h-12">
                     <?php require "book-icon.view.php" ?>
                 </div>
-                <h1 class="text-4xl font-medium">
-                    Много книг
-                </h1>
+                <a href="/">
+                    <h1 class="text-4xl font-medium">
+                        Много книг
+                    </h1>
+                </a>
             </div>
             <div class="flex flex-col">
                 <?php if (isset($_SESSION['username'])): ?>

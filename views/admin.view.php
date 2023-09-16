@@ -10,6 +10,9 @@
     <a href="/admin/update-about-store.php">
         Редактирование страницы о магазине
     </a>
+    <a href="/admin/update-book.php">
+        Добавить книгу
+    </a>
 </section>
 
 <?php require "partials/footer.view.php" ?>

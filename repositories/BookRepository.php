@@ -6,7 +6,8 @@ use mysqli;
 
 class BookRepository
 {
-    public static function all(mysqli $db) {
+    public static function all(mysqli $db)
+    {
         return $db->query("select id, name, type_id, price, rating, image from book")
             ->fetch_all(MYSQLI_ASSOC);
     }
@@ -36,7 +37,8 @@ class BookRepository
 
 
     // $data contains keys ['id', 'name', 'price', 'rating', 'book_type']
-    public static function createOrUpdate(mysqli $db, array $data) : int|string {
+    public static function createOrUpdate(mysqli $db, array $data): int|string
+    {
         $sql = "insert into book (id, name, price, rating, type_id) values(?, ?, ?, ?, ?) on duplicate key update name=?, price=?, rating=?, type_id=?;";
         $db->prepare($sql)->execute([
             $data['id'], $data['name'], $data['price'], $data['rating'], $data['book_type'],
@@ -45,7 +47,7 @@ class BookRepository
         return $db->insert_id;
     }
 
-    public static function getById(mysqli $db, int $id) : array
+    public static function getById(mysqli $db, int $id): array
     {
         $stmt = $db->prepare("select book.id, book.name, type_id, 
                     price, rating, image, bt.name as book_type_name 
@@ -55,5 +57,11 @@ class BookRepository
         $stmt->bind_param('i', $id);
         $stmt->execute();
         return $stmt->get_result()->fetch_assoc();
+    }
+
+    public static function delete(mysqli $db, int $id) : bool
+    {
+        return $db->prepare("delete from users where id = ?")
+            ->execute([$id]);
     }
 }

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php require "partials/header.view.php" ?>
 <?php require_once "../functions.php" ?>
 
@@ -30,8 +31,16 @@ $slider_col = [
                     </li>
                 <?php endforeach; ?>
             </ul>
-            <img class="max-w-[400px] h-auto rounded-xl"
-                 src="<?= image_url($book['image']) ?>" alt="<?= $book['name'] ?>"/>
+            <div>
+                <img class="max-w-[400px] h-auto rounded-xl"
+                     src="<?= image_url($book['image']) ?>" alt="<?= $book['name'] ?>"/>
+                <?php if (isset($_SESSION['username'])): ?>
+                    <a class="mt-4 text-blue-600 underline-offset-2 underline"
+                       href="/admin/update-book/<?=$book['id']?>">
+                        Обновить книгу
+                    </a>
+                <?php endif; ?>
+            </div>
         </div>
 
         <!--        <div class="flex flex-row flex-wrap gap-6">-->

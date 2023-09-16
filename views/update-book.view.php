@@ -1,5 +1,4 @@
 <?php require "partials/header.view.php" ?>
-<?php require_once "../functions.php"?>
 <section class="h-full w-full">
     <form class="mt-4 mx-auto max-w-[400px]" action="" method="post" enctype="multipart/form-data">
         <h1 class="text-3xl text-center font-semibold">
@@ -30,13 +29,13 @@
         <label class="mt-4 block text-xl" for="image">
             Изображение
         </label>
-        <input value="<?= image_url($book['image']) ?>"
+        <input value="<?= $book['image'] ?>"
                class="py-1 px-1.5 w-full rounded-md border border-solid border-slate-600" id="image" name="image" type="file">
 
         <!-- TODO: replace image, when new is selected -->
-        <?php if (image_url($book['image'])): ?>
-            <img class="mx-auto mt-4 max-h-[200px] w-auto" src="<?= image_url($book['image']) ?>" alt="<?= $book['name'] ?>"/>
-            <input name="image" value="<?= image_url($book['image']) ?>" type="hidden">
+        <?php if ($book['image']): ?>
+            <img class="mx-auto mt-4 max-h-[200px] w-auto" src="<?= $book['image'] ?>" alt="<?= $book['name'] ?>"/>
+            <input name="image" value="<?= $book['image'] ?>" type="hidden">
         <?php endif; ?>
 
         <label class="mt-4 block text-xl" for="book_type">
@@ -53,10 +52,17 @@
             <?php endforeach; ?>
         </select>
 
-        <button class="w-full mt-4 px-2 py-2 border border-slate-700 border-solid bg-blue-600 hover:bg-blue-700 text-slate-100 rounded-xl"
+        <button class="w-full mt-4 px-2 py-2 bg-blue-500 hover:bg-blue-600 text-slate-100 font-semibold rounded-xl"
                 type="submit">
             Сохранить
         </button>
+        <?php if($book['id']): ?>
+        <button name="delete"
+                class="w-full mt-1 px-2 py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl"
+        >
+            Удалить
+        </button>
+        <?php endif; ?>
     </form>
 </section>
 
