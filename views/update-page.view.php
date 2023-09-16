@@ -30,10 +30,10 @@
     <div class="w-1/2">
         <div class="flex flex-col h-full">
             <div class="flex justify-end gap-2">
-<!--                <button class="px-3 py-2 text-white font-semibold bg-blue-400 hover:bg-blue-500 rounded-md border-2 border-solid border-blue-500"-->
-<!--                        onclick="onReloadPreview()">-->
-<!--                    Обновить-->
-<!--                </button>-->
+                <button class="px-3 py-2 text-white font-semibold bg-blue-400 hover:bg-blue-500 rounded-md border-2 border-solid border-blue-500"
+                        onclick="onReloadPreview()">
+                    Обновить
+                </button>
 <!--                <button class="px-3 py-2 text-white font-semibold bg-blue-400 hover:bg-blue-500 rounded-md border-2 border-solid border-blue-500"-->
 <!--                        onclick="onOpenFullScreen()"-->
 <!--                >-->
@@ -41,7 +41,7 @@
 <!--                </button>-->
             </div>
             <div class="mt-4 h-full">
-                <iframe onkeyup="onExitFullScreen()" class="bg-white w-full h-full border border-gray-400 rounded-md" id="preview"
+                <iframe class="bg-white w-full h-full border border-gray-400 rounded-md" id="preview"
                         allowfullscreen="allowfullscreen"
                         src="<?= $editor['href'] ?>"></iframe>
             </div>
