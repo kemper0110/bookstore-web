@@ -2,7 +2,7 @@
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $code = $_POST['code'];
-    $code = preg_replace("/(?<=[^\r]|^)\n/", "\r\n", $code);
+    $code = str_replace(array("\r\n", "\r", "\n"), "\n", $code);
     $status = file_put_contents('../../views/books.view.php', $code);
     if(!$status) {
         echo "fail";
