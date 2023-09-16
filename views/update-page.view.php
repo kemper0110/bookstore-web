@@ -23,9 +23,8 @@
                     </button>
                 </div>
             </div>
-            <textarea name="code" id="code" class="mt-4 block w-full h-[70vh] border border-gray-400 rounded-md">
-                <?= $editor['code'] ?>
-            </textarea>
+            <textarea name="code" id="code" class="mt-4 block w-full h-[70vh] border border-gray-400 rounded-md"
+            ><?=$editor['code']?></textarea>
         </form>
     </div>
     <div class="w-1/2">
