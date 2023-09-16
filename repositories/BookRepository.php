@@ -61,7 +61,7 @@ class BookRepository
 
     public static function delete(mysqli $db, int $id) : bool
     {
-        return $db->prepare("delete from users where id = ?")
+        return $db->prepare("delete from book where id = ?")
             ->execute([$id]);
     }
 }
