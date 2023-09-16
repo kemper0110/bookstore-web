@@ -1,7 +1,6 @@
 <?php
+session_start();
 
-//$headers = getallheaders();
-//echo json_encode($headers);
+require "authenticated.php";
 
-echo "<p>Hello {$_SERVER['PHP_AUTH_USER']}.</p>";
-echo "<p>You entered {$_SERVER['PHP_AUTH_PW']} as your password.</p>";
+require "../../views/admin.view.php";

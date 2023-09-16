@@ -1,8 +1,5 @@
-<IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
 RewriteRule ^book\/(\d+)$ book.php?id=$1 [QSA,L]
 RewriteRule ^update-book\/(\d+)$ update-book.php?id=$1 [QSA,L]
 RewriteRule ^update-book$ update-book.php [QSA,L]
-</IfModule>
-

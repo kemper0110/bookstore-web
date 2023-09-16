@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en" class="text-slate-700">
 <head>
@@ -11,13 +15,29 @@
     bg-[url('/img/top.webp')] bg-cover bg-[center_-200px] bg-no-repeat bg-fixed
 ">
     <div class="h-[300px]">
-        <div class="flex items-center text-slate-200 bg-black/40 backdrop-blur p-6 gap-4">
-            <div class="w-12 h-12">
-                <?php require "book-icon.view.php" ?>
+        <div class="bg-black/40 backdrop-blur p-6 text-slate-200 flex justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12">
+                    <?php require "book-icon.view.php" ?>
+                </div>
+                <h1 class="text-4xl font-medium">
+                    Много книг
+                </h1>
             </div>
-            <h1 class="text-4xl font-medium">
-                Много книг
-            </h1>
+            <div class="flex flex-col">
+                <?php if (isset($_SESSION['username'])): ?>
+                    <a href="/admin">
+                        Авторизован <?= $_SESSION['username'] ?>
+                    </a>
+                    <a href="/logout.php">
+                        Выйти
+                    </a>
+                <?php else: ?>
+                    <a href="/admin">
+                        Войти
+                    </a>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 </header>

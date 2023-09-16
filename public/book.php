@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require "../repositories/BookRepository.php";
 use repositories\BookRepository;
 
