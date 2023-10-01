@@ -16,7 +16,7 @@
                         </div>
                         <figcaption class="p-2">
                             <h2 class="text-xl font-semibold">
-                                <?= $book['price'] ?> P
+                                <?= $book['price'] ?> ₽
                             </h2>
                             <div class="flex justify-between items-start">
                                 <h1>
