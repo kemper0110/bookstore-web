@@ -1,14 +1,14 @@
 <?php
 
+use repositories\BookRepository;
+
+require "../repositories/BookRepository.php";
 require "../functions.php";
 
 $db = connect();
 
-$books_array = $db
-    ->query("SELECT id, name, type_id, price, rating, image FROM book")
-    ->fetch_all(MYSQLI_ASSOC);
 $data = [
-    'books' => $books_array
+    'books' => BookRepository::all($db)
 ];
 
 require "../views/books.view.php";
