@@ -30,11 +30,12 @@
             Изображение
         </label>
         <input value="<?= $book['image'] ?>"
-               class="py-1 px-1.5 w-full rounded-md border border-solid border-slate-600" id="image" name="image" type="file">
+               class="py-1 px-1.5 w-full rounded-md border border-solid border-slate-600" id="image" name="image" type="file"
+               accept="image/*"
+        >
+        <img id="preview" class="mx-auto mt-4 max-h-[200px] w-auto" src="<?= $book['image'] ?>" alt="<?= $book['name'] ?>"/>
 
-        <!-- TODO: replace image, when new is selected -->
         <?php if ($book['image']): ?>
-            <img class="mx-auto mt-4 max-h-[200px] w-auto" src="<?= $book['image'] ?>" alt="<?= $book['name'] ?>"/>
             <input name="image" value="<?= $book['image'] ?>" type="hidden">
         <?php endif; ?>
 
@@ -65,6 +66,19 @@
         <?php endif; ?>
     </form>
 </section>
+
+<script>
+    function onimagechange(evt) {
+        console.log(evt)
+        const file = evt.target.files[0]
+        const reader = new FileReader;
+        reader.onload = () => {
+            preview.src = reader.result
+        }
+        reader.readAsDataURL(file)
+    }
+    image.onchange = onimagechange;
+</script>
 
 <?php require "partials/footer.view.php" ?>
 
