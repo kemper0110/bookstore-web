@@ -21,8 +21,16 @@ $slider_col = [
         <?= $book['book_type_name'] ?>
     </a>
 
-    <div class="mt-12 flex flex-wrap gap-4 justify-between">
-        <div class="flex gap-4">
+<!--    grid-cols-book_mobile-->
+<!--    lg:grid-cols-book_medium-->
+<!--    xl:grid-cols-book_wide-->
+    <div class="mt-12 grid items-stretch content-stretch
+    grid-areas-book_mobile
+    lg:grid-areas-book_medium
+    xl:grid-areas-book_wide
+">
+
+        <div class="grid-in-img justify-self-center flex gap-4">
             <ul class="mt-4 flex flex-col gap-2">
                 <?php foreach ($slider_col as $image): ?>
                     <li class="hover:border-purple-600 border-2 border-transparent rounded-lg">
@@ -36,15 +44,14 @@ $slider_col = [
                      src="<?= image_url($book['image']) ?>" alt="<?= $book['name'] ?>"/>
                 <?php if (isset($_SESSION['username'])): ?>
                     <a class="mt-4 text-blue-600 underline-offset-2 underline"
-                       href="/admin/update-book/<?=$book['id']?>">
+                       href="/admin/update-book/<?= $book['id'] ?>">
                         Обновить книгу
                     </a>
                 <?php endif; ?>
             </div>
         </div>
 
-        <!--        <div class="flex flex-row flex-wrap gap-6">-->
-        <div class="flex flex-col gap-6">
+        <div class="grid-in-info self-stretch flex flex-col gap-6">
             <div class="flex gap-3">
                 <?php foreach ($slider as $image): ?>
                     <div>
@@ -75,7 +82,7 @@ $slider_col = [
                                 <div class="w-3/4 shrink whitespace-nowrap text-gray-500">
                                     <?= $key ?>
                                 </div>
-                                <div class="w-1/4">
+                                <div class="max-w-1/4">
                                     <?= $value ?>
                                 </div>
                             </li>
@@ -85,7 +92,7 @@ $slider_col = [
             </div>
         </div>
 
-        <div class="max-w-[340px] w-full flex flex-col gap-8">
+        <div class="grid-in-price self-stretch max-w-[340px] w-full flex flex-col gap-8">
             <div class="p-6 shadow-xl max-h-[300px] rounded-xl">
                 <p class="flex items-end gap-2">
                     <span class="font-semibold text-3xl">
@@ -129,7 +136,6 @@ $slider_col = [
                 </div>
             </div>
         </div>
-        <!--        </div>-->
     </div>
 
 </section>
