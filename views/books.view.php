@@ -10,7 +10,9 @@
                     <figure class="w-full">
                         <div class="relative after:content-[''] after:absolute after:inset-0 after:bg-[rgba(41,43,83,.03)] after:block">
                             <img class="h-auto max-w-full w-full"
-                                 src="<?= image_url($book['image']) ?>"
+                                 <?php if($book['image']): ?>
+                                    src="<?= image_url($book['image']) ?>"
+                                 <?php endif;?>
                                  alt="<?= $book['name'] ?>"
                             />
                         </div>
