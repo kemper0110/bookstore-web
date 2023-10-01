@@ -39,12 +39,38 @@ class BookRepository
     // $data contains keys ['id', 'name', 'price', 'rating', 'book_type']
     public static function createOrUpdate(mysqli $db, array $data): int|string
     {
-        $sql = "insert into book (id, name, price, rating, type_id) values(?, ?, ?, ?, ?) on duplicate key update name=?, price=?, rating=?, type_id=?;";
-        $db->prepare($sql)->execute([
-            $data['id'], $data['name'], $data['price'], $data['rating'], $data['book_type'],
-            $data['name'], $data['price'], $data['rating'], $data['book_type'],
-        ]);
-        return $db->insert_id;
+        if($data['id']) {
+            $sql = "update book set name=?, price=?, rating=?, type_id=?, image=? where id = ?;";
+            $db->prepare($sql)->execute([
+                $data['name'], $data['price'], $data['rating'], $data['book_type'], $data['image'], $data['id']
+            ]);
+            return $data['id'];
+        } else {
+            $sql = "insert into book (id, name, price, rating, type_id, image) values(?, ?, ?, ?, ?, ?);";
+            $db->prepare($sql)->execute([
+               $data['id'], $data['name'], $data['price'], $data['rating'], $data['book_type'], $data['image']
+            ]);
+            return $db->insert_id;
+        }
+
+//        $sql = "insert into book (id, name, price, rating, type_id, image) values(?, ?, ?, ?, ?, ?) on duplicate key update name=?, price=?, rating=?, type_id=?, image=?";
+//        $db->prepare($sql)->execute([
+//            $data['id'], $data['name'], $data['price'], $data['rating'], $data['book_type'], $data['image'],
+//            $data['name'], $data['price'], $data['rating'], $data['book_type'], $data['image']
+//        ]);
+//        if($db->affected_rows === 1)
+//            return $db->insert_id;
+//        else
+//            return $data['id'];
+    }
+
+    public static function exists(mysqli $db, int $id) : bool
+    {
+        $sql = "select exists(select * from book where id = ?)";
+        $stmt = $db->prepare($sql);
+        $stmt->execute([$id]);
+        $row = $stmt->get_result()->fetch_row();
+        return $row[0];
     }
 
     public static function getById(mysqli $db, int $id): array

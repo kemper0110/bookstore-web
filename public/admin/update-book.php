@@ -10,7 +10,7 @@ $id = explode('/', $uri)[3];
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST['delete'])) {
         BookRepository::delete($db, $id);
-        header("Location: /update-book");
+        header("Location: /admin/update-book");
         die();
     }
     $file = $_FILES['image'];
@@ -23,8 +23,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             die(400);
         }
         $imageFileType = strtolower(pathinfo(basename($file['name']),PATHINFO_EXTENSION));
-        $target_name = 'update-book.php' . hash_file('md5', $tmp_name) . random_int(1000, 9999) . 'bookstore' . $imageFileType;
-        if (!move_uploaded_file($tmp_name, 'storage/' . $target_name)) {
+        $target_name = substr(hash_file('md5', $tmp_name), 0, 10) . random_int(10, 99) . '.' . $imageFileType;
+        if (!move_uploaded_file($tmp_name, '../../storage/' . $target_name)) {
             echo 'upload file error';
             die(500);
         }
@@ -39,9 +39,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         'name' => $_POST['name'],
         'price' => $_POST['price'],
         'rating' => $_POST['rating'],
-        'book_type' => $_POST['book_type']
+        'book_type' => $_POST['book_type'],
+        'image' => $image
     ]);
-    header("Location: /update-book/{$id}");
+    header("Location: /admin/update-book/{$id}");
     die();
 }
 
@@ -57,7 +58,5 @@ if($id) {
     $stmt->execute();
     $book = $stmt->get_result()->fetch_assoc();
 }
-if(isset($book['image']))
-    $book['image'] = image_url($book['image']);
 
 require "../../views/update-book.view.php";
