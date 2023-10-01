@@ -28,8 +28,8 @@ function handle_page_update($put_file, $git_file) {
             exit;
         }
     } else if(isset($_POST['restore'])) {
-        $res = chdir('/var/www/bookstore');
-        $res = shell_exec('git restore ' . $git_file);
+        chdir('/var/www/bookstore');
+        shell_exec('git restore ' . $git_file);
     } else if(isset($_POST['commit'])) {
         chdir('/var/www/bookstore');
         shell_exec('git add ' . $git_file);
