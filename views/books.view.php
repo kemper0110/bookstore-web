@@ -4,11 +4,6 @@
     <section
             class="mt-5 md:mt-5 w-full grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-8 place-items-center items-start">
         <?php foreach ($data['books'] as $book): ?>
-
-
-
-
-
             <a href="<?= "/book/${book['id']}" ?>">
                 <article
                         class=" rounded-xl transition-all motion-reduce:transition-none duration-200 hover:ring-2 ring-slate-200 hover:shadow-2xl p-4 -m-4 max-w-[300px]">
