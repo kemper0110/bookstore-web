@@ -33,7 +33,7 @@ function handle_page_update($put_file, $git_file) {
     } else if(isset($_POST['commit'])) {
         chdir('/var/www/bookstore');
         shell_exec('git add ' . $git_file);
-        $message = base64_encode(random_bytes(16));
+        $message = base64_encode(random_bytes(16)) . ' ' . $git_file;
         shell_exec("git commit -m '${message}'");
     }
     header("Location: /admin/update-main.php");

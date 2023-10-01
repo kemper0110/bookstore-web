@@ -1,12 +1,11 @@
 <?php
+require "authenticated.php";
 
 require "./../../repositories/BookRepository.php";
 use repositories\BookRepository;
 
 $uri = $_SERVER['REQUEST_URI'];
 $id = explode('/', $uri)[3];
-
-require "../../functions.php";
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST['delete'])) {

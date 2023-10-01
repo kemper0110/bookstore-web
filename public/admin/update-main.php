@@ -1,7 +1,6 @@
 <?php
-//require "authenticated.php";
+require "authenticated.php";
 
-include "../../functions.php";
 handle_page_update(
     '../../views/books.view.php',
     'views/books.view.php'
