@@ -56,7 +56,7 @@ $slider_col = [
                                     <img src="<?= image_url($book['image']) ?>" alt="<?= $book['name'] ?>"
                                          class="max-w-[150px] h-auto"/>
                                     <figcaption class="font-semibold">
-                                        <?= $book['price'] ?> P
+                                        <?= $book['price'] ?> ₽
                                     </figcaption>
                                 </figure>
                             </div>
