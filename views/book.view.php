@@ -20,18 +20,15 @@ $slider_col = [
        href="/<?= $book['type_id'] . '.php' ?>">
         <?= $book['book_type_name'] ?>
     </a>
-
-<!--    grid-cols-book_mobile-->
-<!--    lg:grid-cols-book_medium-->
-<!--    xl:grid-cols-book_wide-->
-    <div class="mt-12 grid items-stretch content-stretch
-    grid-areas-book_mobile
-    lg:grid-areas-book_medium
-    xl:grid-areas-book_wide
-">
+    <div class="mt-12 grid items-stretch content-stretch gap-y-8
+        grid-areas-book_mobile
+        sm:grid-areas-book_tablet
+        md:grid-areas-book_medium
+        xl:grid-areas-book_wide
+    ">
 
         <div class="grid-in-img justify-self-center flex gap-4">
-            <ul class="mt-4 flex flex-col gap-2">
+            <ul class="mt-4 flex flex-col shrink-0 gap-2">
                 <?php foreach ($slider_col as $image): ?>
                     <li class="hover:border-purple-600 border-2 border-transparent rounded-lg">
                         <img class="w-[70px] h-[90px] rounded-lg" src="<?= image_url($book['image']) ?>"
@@ -39,9 +36,11 @@ $slider_col = [
                     </li>
                 <?php endforeach; ?>
             </ul>
-            <div>
-                <img class="max-w-[400px] h-auto rounded-xl"
-                     src="<?= image_url($book['image']) ?>" alt="<?= $book['name'] ?>"/>
+            <div class="flex flex-1 flex-col shrink">
+                <div class="shrink max-w-[400px] h-auto rounded-xl">
+                    <img class=""
+                         src="<?= image_url($book['image']) ?>" alt="<?= $book['name'] ?>"/>
+                </div>
                 <?php if (isset($_SESSION['username'])): ?>
                     <a class="mt-4 text-blue-600 underline-offset-2 underline"
                        href="/admin/update-book/<?= $book['id'] ?>">
@@ -92,7 +91,7 @@ $slider_col = [
             </div>
         </div>
 
-        <div class="grid-in-price self-stretch max-w-[340px] w-full flex flex-col gap-8">
+        <div class="grid-in-price self-stretch w-full flex flex-col gap-8">
             <div class="p-6 shadow-xl max-h-[300px] rounded-xl">
                 <p class="flex items-end gap-2">
                     <span class="font-semibold text-3xl">
