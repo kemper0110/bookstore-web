@@ -27,19 +27,18 @@ $slider_col = [
         xl:grid-areas-book_wide
     ">
 
-        <div class="grid-in-img justify-self-center flex gap-4">
-            <ul class="mt-4 flex flex-col shrink-0 gap-2">
+        <div class="grid-in-img justify-self-center flex flex-col sm:flex-row gap-4">
+            <ul class="mt-4 flex flex-row sm:flex-col gap-2">
                 <?php foreach ($slider_col as $image): ?>
-                    <li class="hover:border-purple-600 border-2 border-transparent rounded-lg">
-                        <img class="w-[70px] h-[90px] rounded-lg" src="<?= image_url($book['image']) ?>"
+                    <li class="hover:border-purple-600 border-2 border-transparent rounded-lg max-w-[70px] h-auto">
+                        <img class="rounded-lg" src="<?= image_url($book['image']) ?>"
                              alt="<?= $book['name'] ?>"/>
                     </li>
                 <?php endforeach; ?>
             </ul>
-            <div class="flex flex-1 flex-col shrink">
-                <div class="shrink max-w-[400px] h-auto rounded-xl">
-                    <img class=""
-                         src="<?= image_url($book['image']) ?>" alt="<?= $book['name'] ?>"/>
+            <div class="flex flex-1 flex-col">
+                <div class="max-w-[400px] h-auto rounded-xl">
+                    <img src="<?= image_url($book['image']) ?>" alt="<?= $book['name'] ?>"/>
                 </div>
                 <?php if (isset($_SESSION['username'])): ?>
                     <a class="mt-4 text-blue-600 underline-offset-2 underline"
