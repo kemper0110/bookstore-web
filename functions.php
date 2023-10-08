@@ -29,12 +29,14 @@ function handle_page_update($put_file, $git_file) {
         }
     } else if(isset($_POST['restore'])) {
         chdir('/var/www/bookstore');
-        shell_exec('git restore ' . $git_file);
+        $out = [];
+        exec("git restore {$git_file} 2>&1", $out);
     } else if(isset($_POST['commit'])) {
         chdir('/var/www/bookstore');
-        shell_exec('git add ' . $git_file);
-        $message = base64_encode(random_bytes(16)) . ' ' . $git_file;
-        shell_exec("git commit -m '${message}'");
+        $out = [];
+        exec("git add {$git_file} 2>&1", $out);
+        $message = base64_encode(random_bytes(4)).' '.$git_file;
+        exec("git commit -m '{$message}' 2>&1", $out);
     }
     header("Location: /admin/update-main.php");
 }
