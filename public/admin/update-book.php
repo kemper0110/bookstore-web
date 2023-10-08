@@ -29,7 +29,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(count($errors) !== 0) {
         $_SESSION['form_errors'] = $errors;
         $_SESSION['form_data'] = $_POST;
-        header('Location: /admin/update-book');
+        if($id)
+            header("Location: /admin/update-book/${id}");
+        else
+            header('Location: /admin/update-book');
         die;
     }
 

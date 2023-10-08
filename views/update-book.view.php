@@ -1,7 +1,8 @@
 <?php
 $form_errors = $_SESSION['form_errors'] ?? [];
-$form_data = array_map(fn($value) => $value === "" ? null : $value,
-    $_SESSION['form_data'] ?? []);
+$form_data = $_SESSION['form_data'] ?? [];
+//$form_data = array_map(fn($value) => $value === "" ? null : $value,
+//    $_SESSION['form_data'] ?? []);
 
 unset($_SESSION['form_errors']);
 unset($_SESSION['form_data']);
