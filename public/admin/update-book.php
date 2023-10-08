@@ -13,6 +13,33 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: /admin/update-book");
         die();
     }
+
+    $required_fields = [
+        'name' => 'Название обязательно для заполнения',
+        'price' => 'Цена обязательна для заполнения',
+        'rating' => 'Рейтинг обязателен для заполнения',
+        'book_type' => 'Тип книги обязателен для заполнения',
+    ];
+
+    $errors = [];
+    foreach ($required_fields as $field => $error)
+        if(is_null($_POST[$field]) || $_POST[$field] === '')
+            $errors[$field] = $error;
+
+    if(count($errors) !== 0) {
+        $_SESSION['form_errors'] = $errors;
+        $_SESSION['form_data'] = $_POST;
+        header('Location: /admin/update-book');
+        die;
+    }
+
+    $data = [
+        ['key' => 'name', 'value' => $_POST['name'] ?? null],
+        ['key' => 'price', 'value' => $_POST['price'] ?? null],
+        ['key' => 'rating', 'value' => $_POST['rating'] ?? null],
+        ['key' => 'book_type', 'value' => $_POST['book_type'] ?? null],
+    ];
+
     $file = $_FILES['image'];
     $image = null;
     if(!$file['error']) {
