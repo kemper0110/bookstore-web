@@ -6,6 +6,8 @@ $company_info = [
 ];
 ?>
 
+
+
 <?php require "partials/header.view.php" ?>
 <?php require "partials/nav.view.php" ?>
     <section class="w-full">

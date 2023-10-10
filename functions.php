@@ -16,7 +16,7 @@ function image_url(string $img) {
     return null;
 }
 
-function handle_page_update($put_file, $git_file) {
+function handle_page_update($put_file, $git_file, $redirect_to) {
     if($_SERVER['REQUEST_METHOD'] !== 'POST')
         return;
     if(isset($_POST['apply'])) {
@@ -38,5 +38,5 @@ function handle_page_update($put_file, $git_file) {
         $message = base64_encode(random_bytes(4)).' '.$git_file;
         exec("git commit -m '{$message}' 2>&1", $out);
     }
-    header("Location: /admin/update-main.php");
+    header("Location: {$redirect_to}");
 }

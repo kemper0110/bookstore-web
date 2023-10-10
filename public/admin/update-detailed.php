@@ -3,7 +3,8 @@ require "authenticated.php";
 
 handle_page_update(
     '../../views/book.view.php',
-    'views/book.view.php'
+    'views/book.view.php',
+    '/admin/update-detailed.php'
 );
 
 $editor = [
