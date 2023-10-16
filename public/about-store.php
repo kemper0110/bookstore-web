@@ -1,7 +1,7 @@
 <?php
 
-require "partials/header.view.php";
-require "partials/nav.view.php";
+require "../views/partials/header.view.php";
+require "../views/partials/nav.view.php";
 readfile('../views/about-store.view.html');
 
-require "partials/footer.view.php";
+require "../views/partials/footer.view.php";
